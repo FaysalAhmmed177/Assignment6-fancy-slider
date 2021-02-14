@@ -39,7 +39,7 @@ let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
   element.classList.add('added');
- 
+
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
@@ -77,10 +77,17 @@ const createSlider = () => {
     sliderContainer.appendChild(item)
   })
   //changeSlide(0)
-  timer = setInterval(function () {
-    slideIndex++;
-    changeSlide(slideIndex);
-  }, duration);
+  if (duration < 0) {
+    //console.log('Duration :', duration);
+    alert("Try with positive duration");
+  }
+  else {
+    timer = setInterval(function () {
+      slideIndex++;
+      changeSlide(slideIndex);
+    }, duration);
+  }
+
 }
 
 // change slider index 
