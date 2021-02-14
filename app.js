@@ -42,12 +42,11 @@ let slideIndex = 0;
 const selectItem = (event, img) => {
   let element = event.target;
   element.classList.add('added');
-
   let item = sliders.indexOf(img);
   if (item === -1) {
     sliders.push(img);
   } else {
-    alert('Hey, Already added !')
+    sliders.splice(item,1);
   }
 }
 var timer
@@ -81,9 +80,9 @@ const createSlider = () => {
     
   })
   changeSlide(0)
-  if (duration < 0) {
+  if (duration <= 0) {
     //console.log('Duration :', duration);
-    alert("Try with positive duration");
+    alert("Try with positive duration.Otherwise image will not slide automatically.");
   }
   else {
     timer = setInterval(function () {
